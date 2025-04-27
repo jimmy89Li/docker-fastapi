@@ -8,8 +8,11 @@
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
 services:
-  server:
-    build:
-      context: .
+  app:
+    build: .
     ports:
       - 8000:8000
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL=sqlite:///./address_book.db
